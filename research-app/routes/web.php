@@ -13,6 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+#Home
 Route::get('/', function () {
-    return view('welcome');
+    return view('Home');
 });
+
+#Forum
+Route::get('/forum', function () {
+    return view('Forum');
+})->name('Forum');
+
+#Marketplace
+
+#Sign In
+
+#Sign Up
+
+#Cart
