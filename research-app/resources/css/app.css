@@ -13,3 +13,27 @@
     color:inherit;
 }
 
+
+.nav-link {
+    position: relative;
+    transition: all 0.3s ease-in-out; 
+  }
+  
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; 
+    left: 0;
+    height: 2px;
+    width: 0;
+    background-color: #44A44B;
+    transition: width 0.3s ease-in-out;
+  }
+  
+  .nav-link:hover {
+    color: #44A44B;
+  }
+  
+  .nav-link:hover::after {
+    width: 100%;
+  }

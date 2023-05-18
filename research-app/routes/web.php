@@ -26,7 +26,14 @@ Route::get('/forum', function () {
 #Marketplace
 
 #Sign In
+Route::get('/sign-in', function () {
+    return view('SignIn');
+})->name('SignIn');
+
 
 #Sign Up
+Route::get('/sign-up', function () {
+    return view('SignUp');
+})->name('SignUp');
 
 #Cart
