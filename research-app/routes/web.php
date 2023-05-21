@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 #Home
 Route::get('/', function () {
     return view('Home');
-});
+})->name('Home');
 
 #Forum
 Route::get('/forum', function () {
@@ -29,11 +29,18 @@ Route::get('/forum', function () {
 Route::get('/sign-in', function () {
     return view('SignIn');
 })->name('SignIn');
-
+Route::post('/sign-in', 'App\Http\Controllers\LoginController@SignIn')->name('Login');
 
 #Sign Up
 Route::get('/sign-up', function () {
     return view('SignUp');
 })->name('SignUp');
+Route::post('/sign-up', 'App\Http\Controllers\AuthController@signup')->name('SignUp');
+
+#Profile
+Route::get('/profile', function () {
+    return view('profile');
+})->name('Profile');
+Route::get('/profile', 'App\Http\Controllers\ProfileController@getProfile')->name('Profile');
 
 #Cart

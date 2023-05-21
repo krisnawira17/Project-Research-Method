@@ -12,11 +12,16 @@
         <div class="font-semibold text-[24px] cursor-default">E-market</div>
         <div class="link-container">
             <ul class="flex gap-[5vw] font-semibold text-[18px] cursor-pointer">
-                <li><a class="nav-link" href="{{route('Forum')}}">Forum</a></li>
+                <li><a class="nav-link" href="{{route('Home')}}">Home</a></li>
                 <li><a class="nav-link">Marketplace</a></li>
+                @guest
                 <li><a class="nav-link" href="{{route('SignIn')}}">Sign In</a></li>
                 <li><a class="nav-link" href="{{route('SignUp')}}">Sign Up</a></li>
-                <li><a><img src="{{asset('images/cart.svg')}}"></a></li>
+                @else
+                    <li><a class="nav-link">Sell your product</a></li>
+                    <li><a><img src="{{ asset('images/cart.svg') }}"></a></li>
+                    <li><a href="{{route('Profile')}}"><img src="{{ Auth::user()->profile_picture ? Auth::user()->profile_picture : asset('images/placeholder.png') }}" class="h-[39px] w-[39px] object-cover rounded-full"></a></li>
+                @endguest
             </ul>
         </div>
     </nav>
@@ -36,7 +41,7 @@
 
         <div class="flex font-medium">
             <div class="copy-logo">
-                <img class="h-[1vw]" src="{{asset('images/copyright.svg')}}">
+                <img class="h-[0.8vw]" src="{{asset('images/copyright.svg')}}">
             </div>
             {{date("Y")}}E-market
         </div>
