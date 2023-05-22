@@ -18,7 +18,7 @@
                 <li><a class="nav-link" href="{{route('SignIn')}}">Sign In</a></li>
                 <li><a class="nav-link" href="{{route('SignUp')}}">Sign Up</a></li>
                 @else
-                    <li><a class="nav-link">Sell your product</a></li>
+                    <li><a class="nav-link" href="{{route('SellProduct')}}">Sell your product</a></li>
                     <li><a><img src="{{ asset('images/cart.svg') }}"></a></li>
                     <li><a href="{{route('Profile')}}"><img src="{{ Auth::user()->profile_picture ? Auth::user()->profile_picture : asset('images/placeholder.png') }}" class="h-[39px] w-[39px] object-cover rounded-full"></a></li>
                 @endguest

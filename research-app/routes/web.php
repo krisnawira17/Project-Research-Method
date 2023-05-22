@@ -25,6 +25,11 @@ Route::get('/forum', function () {
 
 #Marketplace
 
+#Sell Product
+Route::get('/sellProduct', function () {
+    return view('SellProduct');
+})->name('SellProduct');
+
 #Sign In
 Route::get('/sign-in', function () {
     return view('SignIn');
