@@ -48,6 +48,7 @@ Route::get('/profile', function () {
 })->name('Profile');
 Route::get('/profile', 'App\Http\Controllers\ProfileController@getProfile')->name('Profile');
 Route::post('/profile/update', 'App\Http\Controllers\ProfileController@update')->name('profile.update');
+Route::post('/profile', 'App\Http\Controllers\ProfileController@signout')->name('profile.signout');
 
 
 #Cart

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Address;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
+
 
 class ProfileController extends Controller
 {
@@ -21,7 +24,15 @@ class ProfileController extends Controller
 
         $user->name = $request->input('name') ?? $user->name;
         $user->email = $request->input('email') ?? $user->email;
-        $user->profile_picture = $request->file('profilePicture') ?? $user->profile_picture;
+        if ($request->hasFile('profilePicture')) {
+            Storage::disk('public')->delete($user->profile_picture);
+    
+            $profilePicture = $request->file('profilePicture');
+            $path = Storage::disk('public')->putFile('profile_pictures', $profilePicture);
+    
+            $user->profile_picture = $path;
+        }
+    
         $user->save();
 
         if($user->address){
@@ -41,5 +52,16 @@ class ProfileController extends Controller
 
         return redirect()->back()->with('success', 'Profile updated successfully.');
         
+    }
+
+    public function signout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }
