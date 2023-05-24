@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,10 @@ Route::get('/forum', function () {
 Route::get('/marketplace',function(){
     return view('Marketplace');
 })->name('Marketplace');
+Route::get('/marketplace','App\Http\Controllers\ProductController@index')->name('Marketplace');
+
+#Product Detail
+Route::get('/productDetail/{id}', 'App\Http\Controllers\ProductController@show')->name('productDetail');
 
 #Sell Product
 Route::get('/sellProduct', function () {

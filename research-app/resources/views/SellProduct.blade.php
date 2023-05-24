@@ -6,16 +6,16 @@
                 @csrf
                 <h1 class="font-semibold text-[24px]">List your product</h1>
                 <label>Product name</label>
-                <input type="text" name="productName" class="border border-mainTextColor rounded-lg w-[50vw] px-2">
+                <input type="text" name="productName" class="border border-mainTextColor rounded-lg w-[50vw] px-2" placeholder="Insert the name of your product">
     
                 <label>Product material</label>
-                <input type="text" name="productMaterial" class="border border-mainTextColor rounded-lg px-2">
+                <input type="text" name="productMaterial" class="border border-mainTextColor rounded-lg px-2" placeholder="Name one of the main material (ex:paper,plastic,rubber)">
                 
                 <label>Set quantity</label>
-                <input id ="setQuantityInput" type="number" name="setQuantity" class="border border-mainTextColor rounded-lg px-2">
+                <input id ="setQuantityInput" type="number" name="setQuantity" class="border border-mainTextColor rounded-lg px-2" placeholder="Insert the amount of the product you have">
     
                 <label>Set price</label>
-                <input id ="setPriceInput" type="number" name="setPrice" class="border border-mainTextColor rounded-lg px-2" inputmode="numeric" min="0">
+                <input id ="setPriceInput" type="number" name="setPrice" class="border border-mainTextColor rounded-lg px-2" inputmode="numeric" min="0" placeholder="Set your price (prices are in IDR)">
     
                 <label>Description</label>
                 <textarea name= "productDescription" class="rounded-sm border border-mainTextColor resize-none h-[30vh] px-2"></textarea>

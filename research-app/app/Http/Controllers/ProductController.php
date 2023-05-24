@@ -31,13 +31,23 @@ class ProductController extends Controller
             $product->product_picture = $path;
         }
 
-        // Associate the product with the logged-in user
         $product->user_id = auth()->id();
 
         $product->save();
 
-        // Redirect or return a response as needed
         return redirect()->back()->with('success', 'Product listed successfully!');
+    }
+
+    public function index(){
+        $products = Product::all();
+        return view('Marketplace',compact('products'));
+    }
+
+    public function show($id){
+        $product = Product::findOrFail($id);
+
+        return view('productDetail', ['product' => $product]);
+
     }
 
 }
