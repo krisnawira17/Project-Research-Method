@@ -24,11 +24,15 @@ Route::get('/forum', function () {
 })->name('Forum');
 
 #Marketplace
+Route::get('/marketplace',function(){
+    return view('Marketplace');
+})->name('Marketplace');
 
 #Sell Product
 Route::get('/sellProduct', function () {
     return view('SellProduct');
 })->name('SellProduct');
+Route::post('/sellProduct', 'App\Http\Controllers\ProductController@store')->name('listProduct');
 
 #Sign In
 Route::get('/sign-in', function () {

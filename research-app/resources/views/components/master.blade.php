@@ -13,7 +13,7 @@
         <div class="link-container">
             <ul class="flex gap-[5vw] font-semibold text-[18px] cursor-pointer">
                 <li><a class="nav-link" href="{{route('Home')}}">Home</a></li>
-                <li><a class="nav-link">Marketplace</a></li>
+                <li><a href="{{route('Marketplace')}}" class="nav-link">Marketplace</a></li>
                 @guest
                 <li><a class="nav-link" href="{{route('SignIn')}}">Sign In</a></li>
                 <li><a class="nav-link" href="{{route('SignUp')}}">Sign Up</a></li>

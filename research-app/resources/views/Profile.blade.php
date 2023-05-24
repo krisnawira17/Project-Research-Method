@@ -10,7 +10,7 @@
                 <form action="{{ route('profile.update') }}" method="POST" class="flex flex-col" enctype="multipart/form-data">
                     @csrf
                     <div class="flex flex-row justify-between">
-                        <img src="{{ asset('storage/'.$user->profile_picture) }}" class="w-64 h-64 object-fill">
+                        <img src="{{ Auth::user()->profile_picture ? asset('storage/' . Auth::user()->profile_picture) : asset('images/placeholder.png') }}" class="w-64 h-64 object-fill">
                         <div id="buttonContainer">
                             <button id="editProfileButton" class="border border-buttonColor bg-buttonColor max-h-[4vh] p-2 rounded-md font-medium text-[18px]" type="button">Edit Profile</button>
                             <button id="saveProfileButton" class="hidden border border-buttonColor bg-buttonColor max-h-[4vh] p-2 rounded-md font-medium text-[18px]" type="submit">Save</button>

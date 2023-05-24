@@ -25,11 +25,13 @@ class ProfileController extends Controller
         $user->name = $request->input('name') ?? $user->name;
         $user->email = $request->input('email') ?? $user->email;
         if ($request->hasFile('profilePicture')) {
-            Storage::disk('public')->delete($user->profile_picture);
-    
+            if ($user->profile_picture) {
+                Storage::disk('public')->delete($user->profile_picture);
+            }
+        
             $profilePicture = $request->file('profilePicture');
             $path = Storage::disk('public')->putFile('profile_pictures', $profilePicture);
-    
+        
             $user->profile_picture = $path;
         }
     
