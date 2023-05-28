@@ -33,6 +33,8 @@ Route::get('/marketplace','App\Http\Controllers\ProductController@index')->name(
 #Product Detail
 Route::get('/productDetail/{id}', 'App\Http\Controllers\ProductController@show')->name('productDetail');
 
+
+
 #Sell Product
 Route::get('/sellProduct', function () {
     return view('SellProduct');
@@ -61,3 +63,6 @@ Route::post('/profile', 'App\Http\Controllers\ProfileController@signout')->name(
 
 
 #Cart
+Route::get('/cart','App\Http\Controllers\CartController@index')->name('cart.index');
+Route::post('/cart/add','App\Http\Controllers\CartController@addToCart')->name('cart.add');
+Route::get('/cart/update-quantity/{cartId}/{action}', 'App\Http\Controllers\CartController@updateQuantity');
