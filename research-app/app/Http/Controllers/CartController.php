@@ -37,34 +37,38 @@ class CartController extends Controller
         return redirect()->route('cart.index')->with('success', 'Product added to cart.');
     }
 
-    public function updateQuantity($cartId, $action){
-
+    public function updateQuantity($cartId, $action)
+    {
         $cartItem = Carts::find($cartId);
-
-        if(!$cartItem){
-            return response()->json(['success' => false, 'message' => 'cart item not found.']);
+    
+        if (!$cartItem) {
+            return response()->json(['success' => false, 'message' => 'Cart item not found.']);
         }
-
-        if($action === 'increase'){
-            if($cartItem->quantity <$cartItem->product->quantity){
+    
+        if ($action === 'increase') {
+            if ($cartItem->quantity < $cartItem->product->quantity) {
                 $cartItem->quantity++;
             }
-            
-
-        }elseif($action === 'decrease'){
-            if($cartItem->quantity > 1){
+        } elseif ($action === 'decrease') {
+            if ($cartItem->quantity > 1) {
                 $cartItem->quantity--;
             }
         }
-
+    
         $cartItem->save();
-
+    
         $totalPrice = $cartItem->product->price * $cartItem->quantity;
-
+    
         return response()->json([
             'success' => true,
             'quantity' => $cartItem->quantity,
             'totalPriceFormatted' => number_format($totalPrice, 0, ',', '.')
         ]);
+    }
+
+    public function delete(Carts $cartItem){
+        $cartItem->delete();
+
+        return redirect()->route('cart.index');
     }
 }

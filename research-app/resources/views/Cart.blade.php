@@ -5,7 +5,7 @@
              <div>
                 @foreach ($cartItems as $cartItem)
                     <div class="flex flex-row mb-6">
-                        <img src="{{Storage::url($cartItem->product->product_picture)}}" class="w-[12vw] rounded-md">
+                        <img src="{{Storage::url($cartItem->product->product_picture)}}" class="w-[10rem] h-[10rem] object-contain rounded-md">
                         <div class="ml-4 flex flex-col">
                             <h1 class=" text-[24px] font-semibold">{{$cartItem->product->name}}</h1>
                             <div>
@@ -15,6 +15,7 @@
                         <div class="ml-auto flex flex-col">
                             <p class="font-semibold text-[24px]">Rp{{ number_format($cartItem->product->price * $cartItem->quantity, 0, ',', '.') }}</p>
                             <div class="flex flex-row justify-center text-[21px] font-medium gap-4 ml-auto">
+                                <a href="{{route('cart.delete', $cartItem)}}"><img class="w-[1.5rem] opacity-65" src="{{asset('images/delete.png')}}"></a>
                                 <button class="quantity-button" data-action="decrease" data-cart-id="{{ $cartItem->id }}">-</button>
                                 <p>{{ $cartItem->quantity }}</p>
                                 <button class="quantity-button" data-action="increase" data-cart-id="{{ $cartItem->id }}">+</button>
@@ -25,7 +26,7 @@
              </div>
         </div>
 
-        <div class="bg-formColor shadow-md w-[25vw] p-12">
+        <div class="bg-formColor shadow-md w-[25vw] p-12 max-h-[35rem] h-[100%]">
             <h1 class="font-bold text-[24px]">Checkout</h1>
             <div class="flex flex-col mt-4">
                 <p class="font-semibold text-[18px] text-mainTextColor">Address</p>
@@ -71,7 +72,7 @@
 
                       <p class="font-semibold">Total Price</p>
                       <p id="total-price">Rp{{ number_format($totalPrice, 0, ',', '.') }}</p>
-                      <button class="bg-buttonColor rounded-lg font-bold p-1">Check Out</button>
+                      <button class="bg-buttonColor rounded-lg font-bold p-2 mt-8">Check Out</button>
                 </div>
             </div>
         </div>

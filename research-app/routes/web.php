@@ -66,3 +66,4 @@ Route::post('/profile', 'App\Http\Controllers\ProfileController@signout')->name(
 Route::get('/cart','App\Http\Controllers\CartController@index')->name('cart.index');
 Route::post('/cart/add','App\Http\Controllers\CartController@addToCart')->name('cart.add');
 Route::get('/cart/update-quantity/{cartId}/{action}', 'App\Http\Controllers\CartController@updateQuantity');
+Route::get('cart/delete/{cartItem}', 'App\Http\Controllers\CartController@delete')->name('cart.delete');
